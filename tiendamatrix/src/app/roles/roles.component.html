@@ -1,0 +1,27 @@
+<div class="container">
+
+<h1>
+  {{titulo}}
+</h1>
+<h2>
+  {{prueba}}
+</h2>
+
+<button class="btn btn-info" type="button" [routerLink]="['/marcas']">Mostrar Marcas</button>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Identificador Rol</th>
+      <th scope="col">Nombre Rol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rol of roles">
+      <td>{{rol.idRol}}</td>
+      <td>{{rol.nombre}}</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

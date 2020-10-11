@@ -5,5 +5,5 @@ export class Juego{
   precioJuego: number;
   precioAlquiler: number;
   idMarca: number;
-  fechaLazamiento: string;
+  fechaLazamiento: Date;
 }

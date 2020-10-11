@@ -1,0 +1,32 @@
+<div class="container">
+
+  <button class="btn btn-info" type="button" [routerLink]="['/createGame']">Registrar Juego</button>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Identificador Juego</th>
+        <th scope="col">Nombre Juego</th>
+        <th scope="col">Descripción Juego</th>
+        <th scope="col">Precio Juego</th>
+        <th scope="col">Precio Alquiler</th>
+        <th scope="col">Marca Juego</th>
+        <th scope="col">Fecha Lanzamiento</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games">
+        <td>{{game.idJuego}}</td>
+        <td>{{game.nombre}}</td>
+        <td>{{game.descripcion}}</td>
+        <td>{{game.precioJuego}}</td>
+        <td>{{game.precioAlquiler}}</td>
+        <td>{{game.idMarca}}</td>
+        <td>{{game.fechaLanzamiento}}</td>
+        <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/createGame', game.idJuego]" >Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
