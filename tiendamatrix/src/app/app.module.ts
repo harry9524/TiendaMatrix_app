@@ -7,9 +7,10 @@ import { RolesComponent } from './roles/roles.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { GamesComponent } from './games/games.component';
 import { MainComponent } from './main/main.component';
-
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateGameComponent } from './games/create-game/create-game.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { AdminclientesComponent } from './clientes/adminclientes/adminclientes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},
@@ -18,7 +19,9 @@ const routes: Routes = [
   {path: 'marcas', component: MarcasComponent },
   {path: 'games', component: GamesComponent },
   {path: 'createGame', component: CreateGameComponent },
-  {path: 'createGame/:idJuego', component: CreateGameComponent }
+  {path: 'createGame/:idJuego', component: CreateGameComponent },
+  {path: 'clientes', component: ClientesComponent },
+  {path: 'adminclientes', component: AdminclientesComponent }
 ]
 
 @NgModule({
@@ -28,12 +31,15 @@ const routes: Routes = [
     MarcasComponent,
     GamesComponent,
     MainComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    ClientesComponent,
+    AdminclientesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

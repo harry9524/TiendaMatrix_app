@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h1>ADMINISTRACION DE CLIENTES</h1>
+
+  <button class="btn btn-info" type="button" [routerLink]="['/adminclientes']">Registrar Cliente</button>
+  <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Identificador Cliente</th>
+        <th scope="col">Documento Cliente</th>
+        <th scope="col">Tipo Documento Cliente</th>
+        <th scope="col">Primer Nombre</th>
+        <th scope="col">Seundo Nombre</th>
+        <th scope="col">Primer Apellido</th>
+        <th scope="col">Segundo Apellido</th>
+        <th scope="col">Celular</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Email</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clientes">
+        <td>{{client.idCliente}}</td>
+        <td>{{client.documento}}</td>
+        <td>{{client.tipoDocumento}}</td>
+        <td>{{client.primerNombre}}</td>
+        <td>{{client.segundoNombre}}</td>
+        <td>{{client.primerApellido}}</td>
+        <td>{{client.segundoApellido}}</td>
+        <td>{{client.celular}}</td>
+        <td>{{client.telefono}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.edad}}</td>
+        <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/adminclientes', client.idCliente]" >Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
