@@ -8,15 +8,20 @@ import { Cliente } from '../_model/Cliente';
 })
 export class ClientesService {
 
-  private urlGetClients         = 'http://localhost:9524/matrixtienda/getClients';
-  private urlGetClientxId       = 'http://localhost:9524/matrixtienda/getClientxId';
-  private urlCreateUpdateClient = 'http://localhost:9524/matrixtienda/createUpdateClient';
+  private urlGetClients           = 'http://localhost:9524/matrixtienda/getClients';
+  private urlGetClientxId         = 'http://localhost:9524/matrixtienda/getClientxId';
+  private urlCreateUpdateClient   = 'http://localhost:9524/matrixtienda/createUpdateClient';
+  private urlGetClientFrecuentyer = 'http://localhost:9524/matrixtienda/getClientFrecuentyer';
 
   constructor(private http: HttpClient) { }
 
-// Obtener Todos los Juegos
+// Obtener Todos los Clientes
 getAllClients(): Observable<Cliente[]>{
   return this.http.get<Cliente[]>(this.urlGetClients);
+}
+
+getClientFrecuentyer(): Observable<Cliente[]>{
+  return this.http.get<Cliente[]>(this.urlGetClientFrecuentyer);
 }
 
 // Obtener Cliente por Id

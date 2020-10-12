@@ -154,14 +154,18 @@
         </div>
       </div>
 
-      <button class="btn btn-success" role="button" (click)='createUpdateClient()' [disabled]="form.invalid" *ngIf="!client.idCliente else elseBlock" >Registrar</button>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button class="btn btn-success" role="button" (click)='createUpdateClient()' [disabled]="form.invalid" *ngIf="!client.idCliente else elseBlock" >Registrar</button>
 
       <ng-template #elseBlock>
         <button class="btn btn-success" role="button" (click)='createUpdateClient()' [disabled]="form.invalid" >Actualizar</button>
       </ng-template>
-
-      <button class="btn btn-success" role="button" [routerLink]="['/clientes']" >Atras</button>
-
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success" role="button" [routerLink]="['/clientes']" >Atras</button>
+        </div>
+      </div>
 
     </form>
   </div>

@@ -87,12 +87,17 @@
         <button class="btn btn-info" role="button" [routerLink]="['/marcas']" >Administrar Marcas</button>
       </div>
 
-      <button class="btn btn-success" role="button" (click)='createUpdateGame()' *ngIf="!juego.idJuego else elseBlock" [disabled]="form.invalid">Registrar</button>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button class="btn btn-success" role="button" (click)='createUpdateGame()' *ngIf="!juego.idJuego else elseBlock" [disabled]="form.invalid">Registrar</button>
       <ng-template #elseBlock>
         <button class="btn btn-success" role="button" (click)='createUpdateGame()' [disabled]="form.invalid" >Actualizar</button>
       </ng-template>
-
-      <button class="btn btn-success" type="button" [routerLink]="['/games']">Atras</button>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success" type="button" [routerLink]="['/games']">Atras</button>
+        </div>
+      </div>
 
     </form>
   </div>

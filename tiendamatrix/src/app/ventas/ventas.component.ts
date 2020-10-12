@@ -8,7 +8,7 @@ import { VentasService } from './ventas.service';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit {
-
+  clienteFrecuente: string;
   alquileres: Alquiler[];
 
   constructor(private ventasService: VentasService) { }
@@ -18,6 +18,10 @@ export class VentasComponent implements OnInit {
       r => this.alquileres = r
     );
 
+  }
+
+  getClientFrecuente(){
+this.clienteFrecuente = 'ES HARRY';
   }
 
 }

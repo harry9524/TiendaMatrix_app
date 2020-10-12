@@ -14,11 +14,20 @@ export class ClientesComponent implements OnInit {
   constructor(private clienteService: ClientesService) { }
 
   ngOnInit(): void {
+    this.showAllClient();
+  }
 
+
+  getClientFrecuente(): void{
+    this.clienteService.getClientFrecuentyer().subscribe(
+      r => this.clientes = r
+    );
+  }
+
+  showAllClient(): void{
     this.clienteService.getAllClients().subscribe(
       r => this.clientes = r
     );
-
   }
 
 

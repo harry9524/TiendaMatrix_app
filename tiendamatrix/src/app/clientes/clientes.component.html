@@ -1,8 +1,21 @@
 <div class="container">
-
   <h1 class="card-title">Reporte de Clientes</h1>
-  <button class="btn btn-info" type="button" [routerLink]="['/adminclientes']">Registrar Cliente</button>
-  <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <button class="btn btn-info" type="button" [routerLink]="['/adminclientes']">Registrar Cliente</button>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-info" role="button" (click)='getClientFrecuente()' >Conocer Cliente Más Frecuente</button>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-info" role="button" (click)='showAllClient()' >Mostrar Todos los Clientes</button>
+    </div>
+    <div class="col-sm-1">
+      <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
+    </div>
+  </div>
+  <br>
+  <br>
 
   <table class="table">
     <thead class="thead-light">
