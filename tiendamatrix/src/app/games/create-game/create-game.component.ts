@@ -14,7 +14,6 @@ import { debounceTime } from 'rxjs/operators';
 export class CreateGameComponent implements OnInit {
   juego: Juego = new Juego();
   marcas: Marca[];
-
   form: FormGroup;
 
   constructor(

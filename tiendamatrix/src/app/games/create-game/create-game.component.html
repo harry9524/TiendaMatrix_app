@@ -79,6 +79,7 @@
         <select name="idMarca" formControlName="idMarca"  [(ngModel)]="juego.idMarca" >
           <option [ngValue]="marca.idMarca" *ngFor="let marca of marcas" >{{marca.idMarca}} | {{marca.nombreMarca}}</option>
         </select>
+
         <div *ngIf="form.get('idMarca').errors && form.get('idMarca').touched">
           <p *ngIf="form.get('idMarca').hasError('required')">
             * Este campo es obligatorio

@@ -8,7 +8,7 @@
       <button class="btn btn-info" type="button" (click)='getGameTop()'>Conocer Juego Más Rentado</button>
     </div>
     <div class="col-sm-3">
-      <button class="btn btn-info" role="button" (click)='showAllGames()'>Mostrar Todos los Juegos</button>
+      <button class="btn btn-info" role="button" (click)='getAllGames()'>Mostrar Todos los Juegos</button>
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
@@ -19,16 +19,20 @@
   <form [formGroup]="form">
 
     <div class="form-group row">
-
       <label for="idRol" class="col-form-label col-sm-2">Rol en el Juego: </label>
-      <select name="idRol" formControlName="idRol"  [(ngModel)]="persona.idRol" >
+      <select name="idRol" formControlName="idRol"  [(ngModel)]="filertsJuegos.idRol" >
         <option [ngValue]="rol.idRol" *ngFor="let rol of listaRoles" >{{rol.idRol}} | {{rol.nombreRol}}</option>
       </select>
       <label for="idPersona" class="col-form-label col-sm-1">Persona: </label>
-      <select name="idPersona" formControlName="idPersona"  [(ngModel)]="persona.idPersona" >
+      <select name="idPersona" formControlName="idPersona"  [(ngModel)]="filertsJuegos.idPersona" >
         <option [ngValue]="pers.idPersona" *ngFor="let pers of listaPersonas" >{{pers.idPersona}} | {{pers.nombresPersona}} {{pers.apellidosPersona}} </option>
       </select>
-
+    </div>
+    <div class="form-group row">
+      <label for="idMarca" class="col-form-label col-sm-2">Marca del Juego</label>
+      <select name="idMarca" formControlName="idMarca"  [(ngModel)]="filertsJuegos.idMarca" >
+        <option [ngValue]="marca.idMarca" *ngFor="let marca of listaMarcas" >{{marca.idMarca}} | {{marca.nombreMarca}}</option>
+      </select>
       <button class="btn btn-info" role="button" (click)='getGamexRolyPersona()' >Consultar</button>
     </div>
   </form>

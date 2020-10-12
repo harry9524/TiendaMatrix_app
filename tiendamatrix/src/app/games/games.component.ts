@@ -6,6 +6,8 @@ import { GameService } from './game.service';
 import { Rol } from '../_model/Rol';
 import { Persona } from '../_model/Persona';
 import { debounceTime } from 'rxjs/operators';
+import { FiltersJuego } from '../_model/FiltersJuego';
+import { Marca } from '../_model/Marca';
 
 @Component({
   selector: 'app-games',
@@ -17,7 +19,8 @@ export class GamesComponent implements OnInit {
   games: Juego[];
   listaRoles: Rol[];
   listaPersonas: Persona[];
-  persona: Persona = new Persona();
+  listaMarcas: Marca[];
+  filertsJuegos: FiltersJuego = new FiltersJuego();
   form: FormGroup;
 
   constructor(
@@ -43,22 +46,35 @@ export class GamesComponent implements OnInit {
       });
     }
   ngOnInit(): void {
-    this.showAllGames();
+    this.getAllGames();
     this.getAllPersonas();
     this.getAllRoles();
+    this.getAllMarcas();
   }
 
+
+getAllMarcas(): void{
+  this.gameService.getAllMarcas().subscribe(
+    r => this.listaMarcas = r
+  );
+}
 
   getGameTop(): void {
     this.gameService.getGameTop().subscribe(
       r => this.games = r
     );
+    this.cleanFilters();
   }
 
-  showAllGames(): void {
+  cleanFilters(): void{
+    this.filertsJuegos = new FiltersJuego();
+  }
+
+  getAllGames(): void {
     this.gameService.getAllJuegos().subscribe(
       r => this.games = r
     );
+    this.cleanFilters();
   }
 
   getAllRoles(): void {
@@ -74,7 +90,7 @@ export class GamesComponent implements OnInit {
   }
 
   getGamexRolyPersona(): void {
-    this.gameService.getGamexRolyPersona(this.persona).subscribe(
+    this.gameService.getGamexFilters(this.filertsJuegos).subscribe(
       r => this.games = r
     );
   }
