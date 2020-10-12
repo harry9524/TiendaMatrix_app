@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Alquiler } from '../_model/Alquiler';
+import { FilersAlquiler } from '../_model/FiltersAlquiler';
 import { VentasService } from './ventas.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class VentasComponent implements OnInit {
   clienteFrecuente: string;
   alquileres: Alquiler[];
   alquiler: Alquiler = new Alquiler();
+  filtersAlquiler: FilersAlquiler = FilersAlquiler();
 
   constructor(private ventasService: VentasService) { }
 
@@ -26,8 +28,9 @@ export class VentasComponent implements OnInit {
   }
 
   getVentasDay(): void {
-    this.alquiler = new Alquiler();
-    this.ventasService.getAlquileresxFiltro(this.alquiler).subscribe(
+    this.filtersAlquiler = new FilersAlquiler();
+    this.filtersAlquiler.soloVentasDia = 'S';
+    this.ventasService.getAlquileresxFiltro(this.filtersAlquiler).subscribe(
       r => this.alquileres = r
     );
   }

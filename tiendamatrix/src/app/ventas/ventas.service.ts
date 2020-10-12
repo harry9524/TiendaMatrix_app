@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Alquiler } from '../_model/Alquiler';
+import { FilersAlquiler } from '../_model/FiltersAlquiler';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class VentasService {
   constructor(private http: HttpClient) { }
 
   // Obtener Alquileres por Filtro
-  getAlquileresxFiltro(alquiler: Alquiler): Observable<Alquiler[]> {
-    return this.http.post<Alquiler[]>(this.urlGetAlquileresxFiltro, alquiler);
+  getAlquileresxFiltro(filters: FilersAlquiler): Observable<Alquiler[]> {
+    return this.http.post<Alquiler[]>(this.urlGetAlquileresxFiltro, filters);
   }
 
   // Obtener Todos los Alquileres
