@@ -1,1 +1,169 @@
 
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title">Administrar Clientes</h1>
+    <form [formGroup]="form">
+
+      <div class="form-group row">
+        <label for="documentocliente" class="col-form-label col-sm-2">Documento del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="documentocliente" formControlName="documentocliente" required [(ngModel)]="client.documentoCliente">
+        </div>
+        <div *ngIf="form.get('documentocliente').errors && form.get('documentocliente').touched">
+          <p *ngIf="form.get('documentocliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('documentocliente').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="tipoDocumentoCliente" class="col-form-label col-sm-2">Tipo Documento del Cliente</label>
+        <div class="col-sm-6">
+          <select name="tipoDocumentoCliente" formControlName="tipoDocumentoCliente"  [(ngModel)]="client.tipoDocumentoCliente" >
+            <option [ngValue]="tipoDoc.tipoDocumento" *ngFor="let tipoDoc of tiposDocumentos" >{{tipoDoc.tipoDocumento}} | {{tipoDoc.descripcionTipoDocumento}}</option>
+          </select>
+        </div>
+        <div *ngIf="form.get('tipoDocumentoCliente').errors && form.get('tipoDocumentoCliente').touched">
+          <p *ngIf="form.get('tipoDocumentoCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+
+      </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="primerNombreCliente" class="col-form-label col-sm-2">Primer Nombre del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="primerNombreCliente" formControlName="primerNombreCliente" [(ngModel)]="client.primerNombreCliente">
+        </div>
+        <div *ngIf="form.get('primerNombreCliente').errors && form.get('primerNombreCliente').touched">
+          <p *ngIf="form.get('primerNombreCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('primerNombreCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 50 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="segundoNombreCliente" class="col-form-label col-sm-2">Segundo Nombre del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="segundoNombreCliente" formControlName="segundoNombreCliente" [(ngModel)]="client.segundoNombreCliente">
+        </div>
+        <div *ngIf="form.get('segundoNombreCliente').errors && form.get('segundoNombreCliente').touched">
+          <p *ngIf="form.get('segundoNombreCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('segundoNombreCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 50 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="primerApellidoCliente" class="col-form-label col-sm-2">Primer Apellido del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="primerApellidoCliente" formControlName="primerApellidoCliente" [(ngModel)]="client.primerApellidoCliente">
+        </div>
+        <div *ngIf="form.get('primerApellidoCliente').errors && form.get('primerApellidoCliente').touched">
+          <p *ngIf="form.get('primerApellidoCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('primerApellidoCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 50 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="segundoApellidoCliente" class="col-form-label col-sm-2">Segundo Apellido del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="segundoApellidoCliente" formControlName="segundoApellidoCliente" [(ngModel)]="client.segundoApellidoCliente">
+        </div>
+        <div *ngIf="form.get('segundoApellidoCliente').errors && form.get('segundoApellidoCliente').touched">
+          <p *ngIf="form.get('segundoApellidoCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('segundoApellidoCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 50 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="celularCliente" class="col-form-label col-sm-2">Celular del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="celularCliente" formControlName="celularCliente" [(ngModel)]="client.celularCliente">
+        </div>
+        <div *ngIf="form.get('celularCliente').errors && form.get('celularCliente').touched">
+          <p *ngIf="form.get('celularCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('celularCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="telefonoCliente" class="col-form-label col-sm-2">Telefono del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="telefonoCliente" formControlName="telefonoCliente" [(ngModel)]="client.telefonoCliente">
+        </div>
+        <div *ngIf="form.get('telefonoCliente').errors && form.get('telefonoCliente').touched">
+          <p *ngIf="form.get('telefonoCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('telefonoCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="emailCliente" class="col-form-label col-sm-2">Email del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="emailCliente" formControlName="emailCliente" [(ngModel)]="client.emailCliente">
+        </div>
+        <div *ngIf="form.get('emailCliente').errors && form.get('emailCliente').touched">
+          <p *ngIf="form.get('emailCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('emailCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 20 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="edadCliente" class="col-form-label col-sm-2">Edad del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" (keypress)="keyPress($event)" name="edadCliente" formControlName="edadCliente" [(ngModel)]="client.edadCliente">
+        </div>
+        <div *ngIf="form.get('edadCliente').errors && form.get('edadCliente').touched">
+          <p *ngIf="form.get('edadCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('edadCliente').hasError('edadCliente')">
+            * Este campo debe tener máximo 3 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <button class="btn btn-success" role="button" (click)='createUpdateClient()' [disabled]="form.invalid" *ngIf="!client.idCliente else elseBlock" >Registrar</button>
+
+      <ng-template #elseBlock>
+        <button class="btn btn-success" role="button" (click)='createUpdateClient()' [disabled]="form.invalid" >Actualizar</button>
+      </ng-template>
+
+      <button class="btn btn-success" role="button" [routerLink]="['/clientes']" >Atras</button>
+
+
+    </form>
+  </div>
+</div>
+

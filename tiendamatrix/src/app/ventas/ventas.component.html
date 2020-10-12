@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="card-title">Reporte de Alquileres</h1>
+  <button class="btn btn-info" type="button" [routerLink]="['/alquilarjuego']">Alquilar Juego</button>
+  <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Identificador Registro</th>
+        <th scope="col">Identificador Juego</th>
+        <th scope="col">Nombre Juego</th>
+        <th scope="col">Identificador Cliente</th>
+        <th scope="col">Documento Cliente</th>
+        <th scope="col">Nombre Cliente</th>
+        <th scope="col">Fecha Alquiler</th>
+        <th scope="col">Fecha Vencimiento</th>
+        <th scope="col">Código Compra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alquiler of alquileres">
+        <td>{{alquiler.idAlquiler}}</td>
+        <td>{{alquiler.idJuego}}</td>
+        <td>{{alquiler.nombreJuego}}</td>
+        <td>{{alquiler.idCliente}}</td>
+        <td>{{alquiler.documentoCliente}}</td>
+        <td>{{alquiler.nombreCliente}}</td>
+        <td>{{alquiler.fechaAlquiler}}</td>
+        <td>{{alquiler.fechaVencimiento}}</td>
+        <td>{{alquiler.codigoCompra}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

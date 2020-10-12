@@ -1,7 +1,6 @@
 <div class="container">
 
-  <h1>ADMINISTRACION DE CLIENTES</h1>
-
+  <h1 class="card-title">Reporte de Clientes</h1>
   <button class="btn btn-info" type="button" [routerLink]="['/adminclientes']">Registrar Cliente</button>
   <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
 
@@ -11,30 +10,30 @@
         <th scope="col">Identificador Cliente</th>
         <th scope="col">Documento Cliente</th>
         <th scope="col">Tipo Documento Cliente</th>
-        <th scope="col">Primer Nombre</th>
-        <th scope="col">Seundo Nombre</th>
-        <th scope="col">Primer Apellido</th>
-        <th scope="col">Segundo Apellido</th>
-        <th scope="col">Celular</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Email</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Editar</th>
+        <th scope="col">Primer Nombre Cliente</th>
+        <th scope="col">Seundo Nombre Cliente</th>
+        <th scope="col">Primer Apellido Cliente</th>
+        <th scope="col">Segundo Apellido Cliente</th>
+        <th scope="col">Celular Cliente</th>
+        <th scope="col">Telefono Cliente</th>
+        <th scope="col">Email Cliente</th>
+        <th scope="col">Edad Cliente</th>
+        <th scope="col">Editar Cliente</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let client of clientes">
         <td>{{client.idCliente}}</td>
-        <td>{{client.documento}}</td>
-        <td>{{client.tipoDocumento}}</td>
-        <td>{{client.primerNombre}}</td>
-        <td>{{client.segundoNombre}}</td>
-        <td>{{client.primerApellido}}</td>
-        <td>{{client.segundoApellido}}</td>
-        <td>{{client.celular}}</td>
-        <td>{{client.telefono}}</td>
-        <td>{{client.email}}</td>
-        <td>{{client.edad}}</td>
+        <td>{{client.documentoCliente}}</td>
+        <td>{{client.tipoDocumentoCliente}}</td>
+        <td>{{client.primerNombreCliente}}</td>
+        <td>{{client.segundoNombreCliente}}</td>
+        <td>{{client.primerApellidoCliente}}</td>
+        <td>{{client.segundoApellidoCliente}}</td>
+        <td>{{client.celularCliente}}</td>
+        <td>{{client.telefonoCliente}}</td>
+        <td>{{client.emailCliente}}</td>
+        <td>{{client.edadCliente}}</td>
         <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/adminclientes', client.idCliente]" >Editar</button></td>
       </tr>
     </tbody>

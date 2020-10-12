@@ -1,5 +1,6 @@
-<div class="container">
 
+<div class="container">
+  <h1 class="card-title">Reporte de Juegos</h1>
   <button class="btn btn-info" type="button" [routerLink]="['/createGame']">Registrar Juego</button>
   <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
 
@@ -10,7 +11,7 @@
         <th scope="col">Nombre Juego</th>
         <th scope="col">Descripción Juego</th>
         <th scope="col">Precio Juego</th>
-        <th scope="col">Precio Alquiler</th>
+        <th scope="col">Precio Alquiler x Día del Juego</th>
         <th scope="col">Marca Juego</th>
         <th scope="col">Fecha Lanzamiento</th>
         <th scope="col">Editar</th>
@@ -19,12 +20,12 @@
     <tbody>
       <tr *ngFor="let game of games">
         <td>{{game.idJuego}}</td>
-        <td>{{game.nombre}}</td>
-        <td>{{game.descripcion}}</td>
+        <td>{{game.nombreJuego}}</td>
+        <td>{{game.descripcionJuego}}</td>
         <td>{{game.precioJuego}}</td>
-        <td>{{game.precioAlquiler}}</td>
-        <td>{{game.idMarca}}</td>
-        <td>{{game.fechaLanzamiento}}</td>
+        <td>{{game.precioAlquilerJuego}}</td>
+        <td>{{game.idMarca}} | {{game.nombreMarca}}</td>
+        <td>{{game.fechaLanzamientoJuego}}</td>
         <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/createGame', game.idJuego]" >Editar</button></td>
       </tr>
     </tbody>

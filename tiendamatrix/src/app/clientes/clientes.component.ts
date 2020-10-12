@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../_model/cliente';
+import { Cliente } from '../_model/Cliente';
 import { ClientesService } from './clientes.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.clienteService.getAllClientes().subscribe(
+    this.clienteService.getAllClients().subscribe(
       r => this.clientes = r
     );
 

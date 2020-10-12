@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateGameComponent } from './games/create-game/create-game.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { AdminclientesComponent } from './clientes/adminclientes/adminclientes.component';
+import { VentasComponent } from './ventas/ventas.component';
+import { AlquilarjuegoComponent } from './ventas/alquilarjuego/alquilarjuego.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/main', pathMatch: 'full'},
@@ -21,7 +23,10 @@ const routes: Routes = [
   {path: 'createGame', component: CreateGameComponent },
   {path: 'createGame/:idJuego', component: CreateGameComponent },
   {path: 'clientes', component: ClientesComponent },
-  {path: 'adminclientes', component: AdminclientesComponent }
+  {path: 'adminclientes', component: AdminclientesComponent },
+  {path: 'adminclientes/:idCliente', component: AdminclientesComponent },
+  {path: 'ventas', component: VentasComponent },
+  {path: 'alquilarjuego', component: AlquilarjuegoComponent }
 ]
 
 @NgModule({
@@ -33,7 +38,9 @@ const routes: Routes = [
     MainComponent,
     CreateGameComponent,
     ClientesComponent,
-    AdminclientesComponent
+    AdminclientesComponent,
+    VentasComponent,
+    AlquilarjuegoComponent
   ],
   imports: [
     BrowserModule,

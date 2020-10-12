@@ -1,1 +1,30 @@
-<p>marcas works!</p>
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title">Administrar Marcas</h1>
+    <form [formGroup]="form">
+
+      <div class="form-group row">
+        <label for="nombremarca" class="col-form-label col-sm-2">Documento del Cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="nombremarca" formControlName="nombremarca" required [(ngModel)]="marca.nombreMarca">
+        </div>
+        <div *ngIf="form.get('nombremarca').errors && form.get('nombremarca').touched">
+          <p *ngIf="form.get('nombremarca').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('nombremarca').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
+        </div>
+      </div>
+
+      <button class="btn btn-success" role="button" (click)='createUpdateMarca()' *ngIf="!marca.idMarca else elseBlock" [disabled]="form.invalid">Registrar</button>
+      <ng-template #elseBlock>
+        <button class="btn btn-success" role="button" (click)='createUpdateMarca()' [disabled]="form.invalid" >Actualizar</button>
+      </ng-template>
+
+      <button class="btn btn-success" type="button" [routerLink]="['/createGame']">Atras</button>
+
+    </form>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Cliente } from '../_model/cliente';
+import { Cliente } from '../_model/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +15,17 @@ export class ClientesService {
   constructor(private http: HttpClient) { }
 
 // Obtener Todos los Juegos
-getAllClientes(): Observable<Cliente[]>{
+getAllClients(): Observable<Cliente[]>{
   return this.http.get<Cliente[]>(this.urlGetClients);
 }
 
 // Obtener Cliente por Id
-getJuegoxId(idCliente: number): Observable<Cliente>{
+getClientxId(idCliente: number): Observable<Cliente>{
   return this.http.get<Cliente>(this.urlGetClientxId + '/' + idCliente);
 }
 
 // Registrar/Actualizar Cliente
-createUpdateGame(clientRequest: Cliente): Observable<Cliente>{
+createUpdateClient(clientRequest: Cliente): Observable<Cliente>{
   return this.http.post<Cliente>(this.urlCreateUpdateClient, clientRequest);
 }
 

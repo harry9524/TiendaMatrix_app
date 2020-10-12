@@ -1,13 +1,13 @@
 export class Cliente{
   idCliente: number;
-  documento: string;
-  tipoDocumento: string;
-  primerNombre: string;
-  segundoNombre: string;
-  primerApellido: string;
-  segundoApellido: string;
-  celular: string;
-  telefono: string;
-  email: string;
-  edad: number;
+  documentoCliente: string;
+  tipoDocumentoCliente: string;
+  primerNombreCliente: string;
+  segundoNombreCliente: string;
+  primerApellidoCliente: string;
+  segundoApellidoCliente: string;
+  celularCliente: string;
+  telefonoCliente: string;
+  emailCliente: string;
+  edadCliente: number;
 }

@@ -1,61 +1,98 @@
 <div class="container">
   <div class="card-body">
-    <h5 class="card-title">{{titulo}}</h5>
-    <form>
+    <h1 class="card-title">Administrar Juegos</h1>
+    <form [formGroup]="form">
       <div class="form-group row">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre del Juego</label>
+        <label for="nombreJuego" class="col-form-label col-sm-2">Nombre del Juego</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="nombre" required [(ngModel)]="juego.nombre">
+          <input type="text" class="form-control" name="nombreJuego" formControlName="nombreJuego" [(ngModel)]="juego.nombreJuego">
+        </div>
+        <div *ngIf="form.get('nombreJuego').errors && form.get('nombreJuego').touched">
+          <p *ngIf="form.get('nombreJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('nombreJuego').hasError('maxlength')">
+            * Este campo debe tener máximo 30 caracteres.
+          </p>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="descripcion" class="col-form-label col-sm-2">Descripción del Juego</label>
+        <label for="descripcionJuego" class="col-form-label col-sm-2">Descripción del Juego</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="descripcion" [(ngModel)]="juego.descripcion">
+          <input type="text" class="form-control" name="descripcionJuego" formControlName="descripcionJuego" [(ngModel)]="juego.descripcionJuego">
+        </div>
+        <div *ngIf="form.get('descripcionJuego').errors && form.get('descripcionJuego').touched">
+          <p *ngIf="form.get('descripcionJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('descripcionJuego').hasError('maxlength')">
+            * Este campo debe tener máximo 30 caracteres.
+          </p>
         </div>
       </div>
 
       <div class="form-group row">
         <label for="precioJuego" class="col-form-label col-sm-2">Precio Compra del Juego</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="precioJuego" [(ngModel)]="juego.precioJuego">
+          <input type="text" (keypress)="keyPress($event)" class="form-control" name="precioJuego" formControlName="precioJuego" [(ngModel)]="juego.precioJuego">
+        </div>
+        <div *ngIf="form.get('precioJuego').errors && form.get('precioJuego').touched">
+          <p *ngIf="form.get('precioJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('precioJuego').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="precioAlquiler" class="col-form-label col-sm-2">Precio Alquiler del Juego</label>
+        <label for="precioAlquilerJuego" class="col-form-label col-sm-2">Precio Alquiler x Día del Juego</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="precioAlquiler" min="500" [(ngModel)]="juego.precioAlquiler">
+          <input type="text" (keypress)="keyPress($event)" class="form-control" name="precioAlquilerJuego" formControlName="precioAlquilerJuego"  [(ngModel)]="juego.precioAlquilerJuego">
+        </div>
+        <div *ngIf="form.get('precioAlquilerJuego').errors && form.get('precioAlquilerJuego').touched">
+          <p *ngIf="form.get('precioAlquilerJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('precioAlquilerJuego').hasError('maxlength')">
+            * Este campo debe tener máximo 10 caracteres.
+          </p>
         </div>
       </div>
 
-      <!--
       <div class="form-group row">
-        <label for="idMarca" class="col-form-label col-sm-2">Marca del Juego</label>
+        <label for="fechaLanzamientoJuego" class="col-form-label col-sm-2">Fecha Lanzamiento del Juego</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="idMarca" [(ngModel)]="juego.idMarca">
+          <input type="date" class="form-control" name="fechaLanzamientoJuego" formControlName="fechaLanzamientoJuego"  [(ngModel)]="juego.fechaLanzamientoJuego">
+        </div>
+        <div *ngIf="form.get('fechaLanzamientoJuego').errors && form.get('fechaLanzamientoJuego').touched">
+          <p *ngIf="form.get('fechaLanzamientoJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
         </div>
       </div>
-      -->
+
       <div class="form-group row">
         <label for="idMarca" class="col-form-label col-sm-2">Marca del Juego</label>
-        <div class="col-sm-6">
-        <select class="form-control" [(ngModel)]="juego.idMarca" ngControl="idMarca" >
-          <option value="0">Selecciona una opción</option>
-          <option value="" *ngFor="let marca of marcas" value="marca.idMarca"> {{marca.idMarca}} | {{marca.nombre}} </option>
+        <select name="idMarca" formControlName="idMarca"  [(ngModel)]="juego.idMarca" >
+          <option [ngValue]="marca.idMarca" *ngFor="let marca of marcas" >{{marca.idMarca}} | {{marca.nombreMarca}}</option>
         </select>
-      </div>
+        <div *ngIf="form.get('idMarca').errors && form.get('idMarca').touched">
+          <p *ngIf="form.get('idMarca').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+        </div>
+        <button class="btn btn-info" role="button" [routerLink]="['/marcas']" >Administrar Marcas</button>
       </div>
 
-      <button class="btn btn-success" role="button" (click)='createUpdateGame()' *ngIf="!juego.idJuego else elseBlock" >Registrar</button>
-
+      <button class="btn btn-success" role="button" (click)='createUpdateGame()' *ngIf="!juego.idJuego else elseBlock" [disabled]="form.invalid">Registrar</button>
       <ng-template #elseBlock>
-        <button class="btn btn-success" role="button" (click)='createUpdateGame()' >Actualizar</button>
+        <button class="btn btn-success" role="button" (click)='createUpdateGame()' [disabled]="form.invalid" >Actualizar</button>
       </ng-template>
 
-      <button class="btn btn-success" role="button" (click)='atras()' >Atras</button>
-
+      <button class="btn btn-success" type="button" [routerLink]="['/games']">Atras</button>
 
     </form>
   </div>

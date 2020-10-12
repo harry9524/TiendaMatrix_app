@@ -1,9 +1,10 @@
 export class Juego{
   idJuego: number;
-  nombre: string;
-  descripcion: string;
+  nombreJuego: string;
+  descripcionJuego: string;
   precioJuego: number;
-  precioAlquiler: number;
+  precioAlquilerJuego: number;
   idMarca: number;
-  fechaLazamiento: Date;
+  nombreMarca: string;
+  fechaLanzamientoJuego: string;
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Juego } from 'src/app/_model/juego';
+import { Juego } from 'src/app/_model/Juego';
 import { GameService } from '../game.service';
 import { Marca } from '../../_model/Marca';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -13,15 +13,18 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class CreateGameComponent implements OnInit {
   juego: Juego = new Juego();
-  titulo = 'Resgitro de Juegos';
   marcas: Marca[];
 
   form: FormGroup;
+  seleccionado: Marca;
 
   constructor(
     private gameService: GameService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private formBuilder: FormBuilder,
+    private activatedRoute: ActivatedRoute) {
+      this.buildForm();
+    }
 
   ngOnInit(): void {
     this.cargar();
@@ -32,22 +35,24 @@ export class CreateGameComponent implements OnInit {
 
   }
 
- private buildForm(){
-   this.form = new FormGroup({
-     nombre: new FormControl('',[Validators.required]),
-     descripcion: new FormControl('',[Validators.required]),
-     precioJuego: new FormControl('',[Validators.required]),
-     precioAlquiler: new FormControl('',[Validators.required])
-   });
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      nombreJuego: ['', [Validators.required, Validators.maxLength(30)]],
+      descripcionJuego: ['', [Validators.required, Validators.maxLength(30)]],
+      precioJuego: ['', [Validators.required, Validators.maxLength(10)]],
+      precioAlquilerJuego: ['', [Validators.required, Validators.maxLength(10)]],
+      fechaLanzamientoJuego: ['', [Validators.required]],
+      idMarca: ['', [Validators.required]]
+    });
 
-   this.form.valueChanges
-   .pipe(
-     debounceTime(500)
-   )
-   .subscribe(value => {
-     console.log(value);
-   });
- }
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500)
+    )
+    .subscribe(value => {
+      console.log(value);
+    });
+  }
 
   cargar(): void{
     this.activatedRoute.params.subscribe(
@@ -69,8 +74,13 @@ export class CreateGameComponent implements OnInit {
     );
   }
 
-  atras(): void{
-    this.router.navigate(['games']);
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 
 }
