@@ -8,11 +8,17 @@ import { Alquiler } from '../_model/Alquiler';
 })
 export class VentasService {
 
-  private urlGetAlquileres = 'http://localhost:9524/matrixtienda/getAlquileres';
+  private urlGetAlquileres        = 'http://localhost:9524/matrixtienda/getAlquileres';
   private urlCreateUpdateAlquiler = 'http://localhost:9524/matrixtienda/createUpdateAlquiler';
-  private urlGetValueAlquiler = 'http://localhost:9524/matrixtienda/getValueAlquiler';
+  private urlGetValueAlquiler     = 'http://localhost:9524/matrixtienda/getValueAlquiler';
+  private urlGetAlquileresxFiltro = 'http://localhost:9524/matrixtienda/getAlquileresxFiltro';
 
   constructor(private http: HttpClient) { }
+
+  // Obtener Alquileres por Filtro
+  getAlquileresxFiltro(alquiler: Alquiler): Observable<Alquiler[]> {
+    return this.http.post<Alquiler[]>(this.urlGetAlquileresxFiltro, alquiler);
+  }
 
   // Obtener Todos los Alquileres
   getAllAlquileres(): Observable<Alquiler[]> {

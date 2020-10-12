@@ -10,6 +10,7 @@ import { VentasService } from './ventas.service';
 export class VentasComponent implements OnInit {
   clienteFrecuente: string;
   alquileres: Alquiler[];
+  alquiler: Alquiler = new Alquiler();
 
   constructor(private ventasService: VentasService) { }
 
@@ -20,8 +21,11 @@ export class VentasComponent implements OnInit {
 
   }
 
-  getClientFrecuente(){
-this.clienteFrecuente = 'ES HARRY';
+  getVentasDay(): void {
+    this.alquiler = new Alquiler();
+    this.ventasService.getAlquileresxFiltro(this.alquiler).subscribe(
+      r => this.alquileres = r
+    );
   }
 
 }
