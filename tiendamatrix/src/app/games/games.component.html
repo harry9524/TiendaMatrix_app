@@ -1,4 +1,3 @@
-
 <div class="container">
   <h1 class="card-title">Reporte de Juegos</h1>
   <div class="form-group row">
@@ -9,7 +8,7 @@
       <button class="btn btn-info" type="button" (click)='getGameTop()'>Conocer Juego Más Rentado</button>
     </div>
     <div class="col-sm-3">
-      <button class="btn btn-info" role="button" (click)='showAllGames()' >Mostrar Todos los Juegos</button>
+      <button class="btn btn-info" role="button" (click)='showAllGames()'>Mostrar Todos los Juegos</button>
     </div>
     <div class="col-sm-2">
       <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
@@ -17,7 +16,22 @@
   </div>
   <br>
   <br>
+  <form [formGroup]="form">
 
+    <div class="form-group row">
+
+      <label for="idRol" class="col-form-label col-sm-2">Rol en el Juego: </label>
+      <select name="idRol" formControlName="idRol"  [(ngModel)]="persona.idRol" >
+        <option [ngValue]="rol.idRol" *ngFor="let rol of listaRoles" >{{rol.idRol}} | {{rol.nombreRol}}</option>
+      </select>
+      <label for="idPersona" class="col-form-label col-sm-1">Persona: </label>
+      <select name="idPersona" formControlName="idPersona"  [(ngModel)]="persona.idPersona" >
+        <option [ngValue]="pers.idPersona" *ngFor="let pers of listaPersonas" >{{pers.idPersona}} | {{pers.nombresPersona}} {{pers.apellidosPersona}} </option>
+      </select>
+
+      <button class="btn btn-info" role="button" (click)='getGamexRolyPersona()' >Consultar</button>
+    </div>
+  </form>
 
   <table class="table">
     <thead class="thead-light">
@@ -41,7 +55,8 @@
         <td>{{game.precioAlquilerJuego}}</td>
         <td>{{game.idMarca}} | {{game.nombreMarca}}</td>
         <td>{{game.fechaLanzamientoJuego}}</td>
-        <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['/createGame', game.idJuego]" >Editar</button></td>
+        <td><button type="button" name="button" class="btn btn-primary"
+            [routerLink]="['/createGame', game.idJuego]">Editar</button></td>
       </tr>
     </tbody>
   </table>

@@ -15,10 +15,14 @@ export class VentasComponent implements OnInit {
   constructor(private ventasService: VentasService) { }
 
   ngOnInit(): void {
+    this.getAllAlquileres();
+
+  }
+
+  getAllAlquileres(): void{
     this.ventasService.getAllAlquileres().subscribe(
       r => this.alquileres = r
     );
-
   }
 
   getVentasDay(): void {

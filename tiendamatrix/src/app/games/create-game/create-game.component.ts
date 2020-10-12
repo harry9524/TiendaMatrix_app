@@ -25,6 +25,7 @@ export class CreateGameComponent implements OnInit {
       this.buildForm();
     }
 
+
   ngOnInit(): void {
     this.cargar();
 
