@@ -12,7 +12,7 @@ export class VentasComponent implements OnInit {
   clienteFrecuente: string;
   alquileres: Alquiler[];
   alquiler: Alquiler = new Alquiler();
-  filtersAlquiler: FilersAlquiler = FilersAlquiler();
+  filtersAlquiler: FilersAlquiler = new FilersAlquiler();
 
   constructor(private ventasService: VentasService) { }
 
