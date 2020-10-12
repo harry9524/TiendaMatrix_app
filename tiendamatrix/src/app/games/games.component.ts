@@ -14,11 +14,19 @@ export class GamesComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
+    this.showAllGames();
+  }
 
+  getGameTop(): void {
+    this.gameService.getGameTop().subscribe(
+      r => this.games = r
+    );
+  }
+
+  showAllGames(): void {
     this.gameService.getAllJuegos().subscribe(
       r => this.games = r
     );
-
   }
 
 }

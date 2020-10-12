@@ -5,6 +5,12 @@
     <div class="col-sm-2">
       <button class="btn btn-info" type="button" [routerLink]="['/createGame']">Registrar Juego</button>
     </div>
+    <div class="col-sm-3">
+      <button class="btn btn-info" type="button" (click)='getGameTop()'>Conocer Juego Más Rentado</button>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-info" role="button" (click)='showAllGames()' >Mostrar Todos los Juegos</button>
+    </div>
     <div class="col-sm-2">
       <button class="btn btn-info" type="button" [routerLink]="['/main']">Atras</button>
     </div>

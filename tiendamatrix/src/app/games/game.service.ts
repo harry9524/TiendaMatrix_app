@@ -14,12 +14,18 @@ export class GameService {
   private urlCreateUpdateGame  = 'http://localhost:9524/matrixtienda/createUpdateGame';
   private urlGetMarcas         = 'http://localhost:9524/matrixtienda/getMarcas';
   private urlcreateUpdateMarca = 'http://localhost:9524/matrixtienda/createUpdateMarca';
+  private urlGetGameTop        = 'http://localhost:9524/matrixtienda/getGameTop';
 
   constructor(private http: HttpClient) { }
 
   // Obtener Marcas
   getAllMarcas(): Observable<Marca[]>{
     return this.http.get<Marca[]>(this.urlGetMarcas);
+  }
+
+   // Obtener Juego Más Rentado
+  getGameTop(): Observable<Juego[]>{
+    return this.http.get<Juego[]>(this.urlGetGameTop);
   }
 
   // Obtener Todos los Juegos
