@@ -10,6 +10,7 @@ export class VentasService {
 
   private urlGetAlquileres = 'http://localhost:9524/matrixtienda/getAlquileres';
   private urlCreateUpdateAlquiler = 'http://localhost:9524/matrixtienda/createUpdateAlquiler';
+  private urlGetValueAlquiler = 'http://localhost:9524/matrixtienda/getValueAlquiler';
 
   constructor(private http: HttpClient) { }
 
@@ -19,8 +20,13 @@ export class VentasService {
   }
 
   // Registrar/Actualizar Alquiler
-  createUpdateClient(alquilerRequest: Alquiler): Observable<Alquiler> {
+  createUpdateAlquiler(alquilerRequest: Alquiler): Observable<Alquiler> {
     return this.http.post<Alquiler>(this.urlCreateUpdateAlquiler, alquilerRequest);
+  }
+
+  // Obtener Valor
+  getValueAlquiler(alquilerRequest: Alquiler): Observable<Alquiler> {
+    return this.http.post<Alquiler>(this.urlGetValueAlquiler, alquilerRequest);
   }
 
 }

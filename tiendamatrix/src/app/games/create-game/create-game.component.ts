@@ -16,7 +16,6 @@ export class CreateGameComponent implements OnInit {
   marcas: Marca[];
 
   form: FormGroup;
-  seleccionado: Marca;
 
   constructor(
     private gameService: GameService,

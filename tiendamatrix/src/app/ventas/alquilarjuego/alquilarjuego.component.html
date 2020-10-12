@@ -1,1 +1,87 @@
-<p>alquilarjuego works!</p>
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title">Alquilar Juego</h1>
+    <form [formGroup]="form">
+
+      <div class="form-group row">
+        <label for="idJuego" class="col-form-label col-sm-2">Seleccione un Juego: </label>
+        <select name="idJuego" formControlName="idJuego"  [(ngModel)]="alquilar.idJuego" (change)="getPlataformaxGame()">
+          <option [ngValue]="game.idJuego" *ngFor="let game of listaGames" >{{game.idJuego}} | {{game.nombreJuego}}</option>
+        </select>
+        <div *ngIf="form.get('idJuego').errors && form.get('idJuego').touched">
+          <p *ngIf="form.get('idJuego').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="idPlataforma" class="col-form-label col-sm-2">Plataforma:</label>
+        <select name="idPlataforma" formControlName="idPlataforma"  [(ngModel)]="alquilar.idPlataforma" >
+          <option [ngValue]="plataforma.idPlataforma" *ngFor="let plataforma of listaPlataformas" >{{plataforma.idPlataforma}} | {{plataforma.nombrePlataforma}}</option>
+        </select>
+        <div *ngIf="form.get('idPlataforma').errors && form.get('idPlataforma').touched">
+          <p *ngIf="form.get('idPlataforma').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="documentoCliente" class="col-form-label col-sm-2">Documento Cliente: </label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="documentoCliente" formControlName="documentoCliente" [(ngModel)]="alquilar.documentoCliente">
+        </div>
+        <div *ngIf="form.get('documentoCliente').errors && form.get('documentoCliente').touched">
+          <p *ngIf="form.get('documentoCliente').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+          <p *ngIf="form.get('documentoCliente').hasError('maxlength')">
+            * Este campo debe tener máximo 20 caracteres.
+          </p>
+        </div>
+        <button class="btn btn-info" role="button" (click)='validateClient()' [disabled]="form.get('documentoCliente').invalid" >Validar Cliente</button>
+      </div>
+
+      <div class="form-group row">
+        <label for="fechaFinPrestamo" class="col-form-label col-sm-2">Fecha Fin Prestado: </label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" name="fechaFinPrestamo" formControlName="fechaFinPrestamo"  [(ngModel)]="alquilar.fechaFinPrestamo">
+        </div>
+        <div *ngIf="form.get('fechaFinPrestamo').errors && form.get('fechaFinPrestamo').touched">
+          <p *ngIf="form.get('fechaFinPrestamo').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="valorPagado" class="col-form-label col-sm-2">Valor a Pagar: </label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="valorPagado" formControlName="valorPagado" disabled [(ngModel)]="alquilar.valorPagado">
+        </div>
+        <div *ngIf="form.get('valorPagado').errors && form.get('valorPagado').touched">
+          <p *ngIf="form.get('valorPagado').hasError('required')">
+            * Este campo es obligatorio
+          </p>
+        </div>
+        <button class="btn btn-info" role="button" (click)='calculateValorPagar()' [disabled]="form.get('fechaFinPrestamo').invalid || form.get('idJuego').invalid">Calular</button>
+      </div>
+      {{mensajeControlado}}
+      <br>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button class="btn btn-success" role="button" (click)='createUpdateAlquiler()' *ngIf="!alquilar.idAlquiler else elseBlock" [disabled]="form.invalid">Registrar</button>
+      <ng-template #elseBlock>
+        <button class="btn btn-success" role="button" (click)='createUpdateAlquiler()' [disabled]="form.invalid" >Actualizar</button>
+      </ng-template>
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-success" type="button" [routerLink]="['/ventas']">Atras</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

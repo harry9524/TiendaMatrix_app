@@ -4,8 +4,12 @@ export class Alquiler{
   nombreJuego: string;
   idCliente: number;
   nombreCliente: string;
-  fechaAlquiler: Date;
-  fechaVencimiento: Date;
+  fechaInicioPrestamo: Date;
+  fechaFinPrestamo: Date;
+  fechaDevolucion: Date;
   codigoCompra: string;
   documentoCliente: string;
+  valorPagado: number;
+  idPlataforma: number;
+  nombrePlataforma: string;
 }
